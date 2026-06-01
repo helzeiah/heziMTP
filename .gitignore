@@ -1,0 +1,37 @@
+# Build directories
+build/
+build_debug/
+build_release/
+*.app/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+_deps/
+
+# Xcode / macOS
+.DS_Store
+*.xcodeproj/
+*.xcworkspace/
+*.pbxproj
+xcuserdata/
+
+# Compiled objects
+*.o
+*.a
+*.dylib
+
+# Game files — don't accidentally commit large ROMs
+*.nsp
+*.xci
+*.nsz
+*.xcz
+*.nro
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
