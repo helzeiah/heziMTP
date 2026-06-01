@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>heziMTP</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="titlebar">
+    <div class="tl-spacer"></div>
+    <span id="app-title">heziMTP</span>
+    <div id="conn-badge" class="badge disconnected">No Device</div>
+  </div>
+
+  <div id="device-bar">
+    <div class="device-left">
+      <button class="action-btn" id="btn-open-picker">Add Files</button>
+    </div>
+    <div class="device-center" id="device-status-text">Waiting for Nintendo Switch…</div>
+    <div class="device-right">
+      <button class="action-btn primary" id="btn-scan">Scan</button>
+    </div>
+  </div>
+
+  <div id="main">
+    <!-- Left: Local -->
+    <div class="panel" id="panel-local">
+      <div class="panel-toolbar">
+        <div class="nav-group">
+          <button class="nav-btn" id="btn-local-up" title="Go Up">
+            <svg viewBox="0 0 16 16"><path d="M8 3L3 8h3v5h4V8h3L8 3z" fill="currentColor"/></svg>
+          </button>
+          <button class="nav-btn" id="btn-local-home" title="Home">
+            <svg viewBox="0 0 16 16"><path d="M8 2L2 7h2v6h4v-4h4v4h2V7l2 0-6-5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div id="local-breadcrumb" class="breadcrumb"></div>
+        <button class="nav-btn icon-only" id="btn-local-refresh" title="Refresh">
+          <svg viewBox="0 0 16 16"><path d="M13.5 8A5.5 5.5 0 1 1 8 2.5V1l3 2.5L8 6V4.5A3.5 3.5 0 1 0 11.5 8h2z" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <div class="file-list" id="local-files">
+        <div class="loading">Loading…</div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div id="panel-divider"></div>
+
+    <!-- Right: Switch -->
+    <div class="panel" id="panel-remote">
+      <div class="panel-toolbar">
+        <div class="nav-group">
+          <button class="nav-btn" id="btn-remote-up" title="Go Up" disabled>
+            <svg viewBox="0 0 16 16"><path d="M8 3L3 8h3v5h4V8h3L8 3z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <select id="storage-sel" class="storage-select"></select>
+        <div id="remote-breadcrumb" class="breadcrumb"></div>
+        <button class="nav-btn icon-only" id="btn-remote-refresh" title="Refresh">
+          <svg viewBox="0 0 16 16"><path d="M13.5 8A5.5 5.5 0 1 1 8 2.5V1l3 2.5L8 6V4.5A3.5 3.5 0 1 0 11.5 8h2z" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <div class="file-list" id="remote-files">
+        <div class="empty-state" id="remote-empty-state">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" class="empty-icon">
+            <rect x="8" y="4" width="32" height="40" rx="4"/>
+            <line x1="24" y1="12" x2="24" y2="18"/>
+            <circle cx="24" cy="22" r="1.5" fill="currentColor"/>
+          </svg>
+          <div class="empty-title">No Switch Connected</div>
+          <div class="empty-sub">Connect via USB-C and open DBI or Sphaira MTP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transfers -->
+  <div id="transfers-panel">
+    <div id="transfers-header">
+      <span id="transfers-label">Transfers</span>
+      <button class="action-btn danger small" id="btn-cancel-all" style="display:none">Cancel All</button>
+    </div>
+    <div id="transfers-list"></div>
+  </div>
+
+  <!-- Status bar -->
+  <div id="statusbar">
+    <span id="sb-left"></span>
+    <span id="sb-center"></span>
+    <span id="sb-right"></span>
+  </div>
+
+  <!-- Context menu -->
+  <div id="ctx-menu" class="ctx-menu hidden">
+    <div class="ctx-item" id="ctx-upload">Upload to Switch</div>
+    <div class="ctx-item" id="ctx-download">Download to Mac</div>
+    <div class="ctx-item ctx-sep" id="ctx-sep-del"></div>
+    <div class="ctx-item danger" id="ctx-delete">Delete…</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
