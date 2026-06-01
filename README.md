@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="heziMTP.png" width="820" alt="heziMTP screenshot" />
-
 <h1>heziMTP</h1>
 
 <p>A fast (<strong>3-4x faster than direct microSD</strong>), native macOS MTP client for Nintendo Switch.<br>
@@ -11,6 +9,10 @@ Transfer NSP, XCI, and NRO files over USB-C without ever removing your microSD c
 [![License](https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square)](LICENSE)
 [![C++20](https://img.shields.io/badge/C%2B%2B-20-orange?style=flat-square&logo=cplusplus&logoColor=white)]()
 [![Universal](https://img.shields.io/badge/arch-Apple%20Silicon%20%2B%20Intel-lightgrey?style=flat-square)]()
+
+<br>
+
+<img src="heziMTP.png" width="820" alt="heziMTP screenshot" />
 
 </div>
 
@@ -84,6 +86,27 @@ open build/heziMTP.app
 
 Speed is limited by your microSD write speed (for uploads) and USB link speed. A fast UHS-I card + USB 3.0 cable will get the most out of it.
 
+## Installation Note (macOS Gatekeeper)
+
+Because heziMTP isn't notarized with an Apple Developer certificate, macOS will show an **"unidentified developer"** warning the first time you open it. This is normal for open-source apps distributed outside the App Store.
+
+**To open it:**
+
+**Option A — Right-click method (easiest)**
+Right-click (or Control-click) `heziMTP.app` → **Open** → click **Open** in the dialog. You only need to do this once.
+
+**Option B — Terminal**
+```bash
+xattr -r -d com.apple.quarantine /Applications/heziMTP.app
+# or wherever you placed it:
+xattr -r -d com.apple.quarantine ~/Downloads/heziMTP.app
+```
+
+**Option C — System Settings**
+System Settings → Privacy & Security → scroll to Security → click **Open Anyway**.
+
+---
+
 ## Troubleshooting
 
 **App doesn't detect my Switch**
@@ -96,6 +119,14 @@ Speed is limited by your microSD write speed (for uploads) and USB link speed. A
 
 - Update DBI/Sphaira to a recent version
 - Sphaira specific: ensure you're in the **MTP Install** menu
+
+## Future Work
+
+- **Broader MTP device support** — the underlying MTP/USB layer is device-agnostic. Android phones, cameras, and other MTP devices should work with minor tweaks to device detection and protocol handling
+- Folder upload (recursive)
+- Resume interrupted transfers
+- Transfer queue reordering
+- Rename files on device
 
 ## Building
 

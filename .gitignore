@@ -23,6 +23,8 @@ xcuserdata/
 *.a
 *.dylib
 
+heziMTP-*.zip
+
 # Game files — don't accidentally commit large ROMs
 *.nsp
 *.xci
